@@ -110,7 +110,7 @@ angular.module('starter.controllers', ['ionic-datepicker'])
     };
     $scope.logout = function () {
         $localstorage.set('token', '');
-        $location.go('login');
+        $location.path('login');
     };
     $scope.recharge = function (code) {
         $ionicLoading.show();

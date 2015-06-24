@@ -7,6 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
     .run(function ($ionicPlatform, $ionicPopup, $localstorage, $location) {
+        //$localstorage.set('token', 'a')
         if (typeof $localstorage.get('token') === 'undefined') {
             $location.path('login');
         }
