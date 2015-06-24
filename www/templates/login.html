@@ -1,0 +1,16 @@
+<ion-view view-title="Login" name="login-view">
+    <ion-content class="padding">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="Owner Email" ng-model="user.owneremail">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Sub Account" ng-model="user.subacc">
+            </label>
+            <label class="item item-input">
+                <input type="password" placeholder="Sub Account Password" ng-model="user.subaccpass">
+            </label>
+        </div>
+        <button class="button button-block button-calm" ng-click="login()">Login</button>
+    </ion-content>
+</ion-view>

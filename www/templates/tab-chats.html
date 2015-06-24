@@ -1,0 +1,21 @@
+<ion-view view-title="Message">
+    <ion-content padding="true">
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">To</span>
+                <input type="text" placeholder="To" ng-model="message.to">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Send as</span>
+                <input type="datetime" placeholder="Send as" ng-model="message.as">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Message</span>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Message" ng-model="message.msg"></textarea>
+            </label>
+
+        </div>
+
+        <button class="button button-block button-positive" ng-click="send()">Send</button>
+    </ion-content>
+</ion-view>
