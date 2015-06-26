@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['lokijs'])
     .value("myConfig", {
         url: "http://www.smslive247.com/http/index.aspx?"
     })
@@ -28,52 +28,60 @@ angular.module('starter.services', [])
     })
 
 .factory('Message', function ($http, myConfig) {
-    var msg = {};
-    msg.send = function (token, msg, sender, sendto) {
-        var url = myConfig.url + 'cmd=sendmsg&sessionid=' + token + '&message=' + msg + ' &sender=' + sender + '&sendto=' + sendto + '&msgtype=0';
+        var msg = {};
+        msg.send = function (token, msg, sender, sendto) {
+            var url = myConfig.url + 'cmd=sendmsg&sessionid=' + token + '&message=' + msg + ' &sender=' + sender + '&sendto=' + sendto + '&msgtype=0';
 
-        return $http.get(url);
-    };
-    msg.bal = function (token) {
-        var url = myConfig.url + 'cmd=querybalance&sessionid=' + token;
-        return $http.get(url);
-    };
-    msg.querymsgbal = function (token, msgid) {
-        var url = myConfig.url + 'cmd=querymsgcharge&sessionid=' + token + '&messageid=' + msgid;
-        return $http.get(url);
-    };
-    msg.status = function (token, msgid) {
-        var url = myConfig.url + 'cmd=querybalance&sessionid=' + token + '&messageid=' + msgid;
-        return $http.get(url);
-    };
-    msg.recharge = function (token, code) {
-        var url = myConfig.url + 'cmd=recharge&sessionid=' + token + '&rcode=' + code;
-        return $http.get(url);
-    }
-    msg.sent = function (token) {
-        var url = myConfig.url + 'cmd=getsentmsgs&sessionid=' + token + '&pagesize=50&pagenumber=1&begindate=' + getdate() +
-            '&enddate=' + getdate(10);
-        console.log(url);
-        return $http.get(url);
-    };
-    return msg;
-})
-
-.factory('$localstorage', ['$window', function ($window) {
-    return {
-        set: function (key, value) {
-            $window.localStorage[key] = value;
-        },
-        get: function (key, defaultValue) {
-            return $window.localStorage[key] || defaultValue;
-        },
-        setObject: function (key, value) {
-            $window.localStorage[key] = JSON.stringify(value);
-        },
-        getObject: function (key) {
-            return JSON.parse($window.localStorage[key] || '{}');
+            return $http.get(url);
+        };
+        msg.bal = function (token) {
+            var url = myConfig.url + 'cmd=querybalance&sessionid=' + token;
+            return $http.get(url);
+        };
+        msg.querymsgbal = function (token, msgid) {
+            var url = myConfig.url + 'cmd=querymsgcharge&sessionid=' + token + '&messageid=' + msgid;
+            return $http.get(url);
+        };
+        msg.status = function (token, msgid) {
+            var url = myConfig.url + 'cmd=querybalance&sessionid=' + token + '&messageid=' + msgid;
+            return $http.get(url);
+        };
+        msg.recharge = function (token, code) {
+            var url = myConfig.url + 'cmd=recharge&sessionid=' + token + '&rcode=' + code;
+            return $http.get(url);
         }
-    }
+        msg.sent = function (token) {
+            var url = myConfig.url + 'cmd=getsentmsgs&sessionid=' + token + '&pagesize=50&pagenumber=1&begindate=' + getdate() +
+                '&enddate=' + getdate(10);
+            console.log(url);
+            return $http.get(url);
+        };
+        return msg;
+    })
+    .factory('Contact', function (Loki) {
+        var db = new Loki('Contacts.json');
+    })
+    .factory('$localstorage', ['$window', function ($window) {
+        return {
+            set: function (key, value) {
+                $window.localStorage[key] = value;
+            },
+            get: function (key, defaultValue) {
+                return $window.localStorage[key] || defaultValue;
+            },
+            setObject: function (key, value) {
+                $window.localStorage[key] = JSON.stringify(value);
+            },
+            getObject: function (key) {
+                return JSON.parse($window.localStorage[key] || '{}');
+            },
+            setArray: function (key, value) {
+                $window.localStorage[key] = JSON.stringify(value);
+            },
+            getArray: function (key) {
+                return JSON.parse($window.localStorage[key] || '[]');
+            }
+        }
 }]);
 
 function getdate(back) {

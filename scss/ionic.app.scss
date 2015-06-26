@@ -15,9 +15,86 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #86130b !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+/* Empty. Add your own CSS if you like */
+
+body {}
+
+.card {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: transparent;
+    color: #fff;
+}
+
+.item {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: transparent;
+    color: #fff;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    background: transparent;
+    color: #fff;
+}
+
+.item-complex .item-content,
+.item-radio .item-content {
+    background: rgba(255, 0, 0, 0.1);
+    color: #fff;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.list {
+    background: rgba(255, 0, 0, 0.1);
+    color: #fff;
+}
+
+.item .item-input {
+    background: transparent;
+    color: #fff;
+}
+
+.item-complex .item-content:active,
+.item-radio .item-content:active {
+    background: rgba(255, 0, 0, 0.3);
+    border-color: transparent;
+    color: #fff;
+}
+
+.input-label {
+    color: #fffccc
+}
+
+.scroll-content {
+    background: url(../img/bg.jpg) !important;
+}
+/* Empty. Add your own CSS if you like */

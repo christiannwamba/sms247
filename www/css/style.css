@@ -57,7 +57,11 @@ input[type="color"] {
     color: #fff;
 }
 
+.input-label {
+    color: #fffccc
+}
+
 .scroll-content {
-    background: url(../img/bg.png) !important;
+    background: url(../img/bg.jpg) !important;
 }
 /* Empty. Add your own CSS if you like */

@@ -1,5 +1,6 @@
 <ion-view view-title="Message">
     <ion-content padding="true">
+        <a class="button button-icon icon ion-person" style="color:#c51c10" ng-click="openModal()"></a>
         <div class="list">
             <label class="item item-input item-floating-label">
                 <span class="input-label">To</span>
@@ -7,7 +8,7 @@
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label">Send as</span>
-                <input type="datetime" placeholder="Send as" ng-model="message.as">
+                <input type="text" placeholder="Send as" ng-model="message.as">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label">Message</span>
@@ -15,7 +16,7 @@
             </label>
 
         </div>
-
+        
         <button class="button button-block button-assertive" ng-click="send()">Send</button>
     </ion-content>
 </ion-view>

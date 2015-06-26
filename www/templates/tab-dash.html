@@ -4,15 +4,15 @@
             <div class="item item-divider">SMS Balance</div>
             <div class="item item-body">
                 <div>
-                    Your SMS balance: <b>{{bal}}</b>
+                    Your SMS balance: <b ng-bind="bal"></b>
                 </div>
             </div>
         </div>
         <div class="list card">
             <div class="item item-divider">SMS Log for 24 hours</div>
             <div class="item item-body">
-                <div>
-                    {{msg}}
+                <div ng-bind="msg">
+                    
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="item item-divider">Login Token</div>
             <div class="item item-body">
                 <div>
-                    You are loggin in as: <b>{{token}}</b>
+                    You are loggin in as: <b ng-bind="token"></b>
                 </div>
             </div>
         </div>

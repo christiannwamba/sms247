@@ -1,0 +1,18 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-assertive" align-title="center">
+        <h1 class="title">Contacts Log</h1>
+        <a class="button button-icon icon ion-close" style="color:#fff" ng-click="closeModal()"></a>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list" style="padding-top:20px">
+            <label class="item item-input">
+                <input type="text" placeholder="Search Phone Number" ng-model="search">
+            </label>
+        </div>
+        <ion-list>
+            <ion-item ng-repeat="c in contacts | filter:search | limitTo:50 track by $index" ng-click="closeModal(c.value)" ng-bind="c.value">
+                
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-modal-view>

@@ -6,11 +6,16 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
+    .config(['$ionicConfigProvider', function ($ionicConfigProvider) {
+
+        $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
+}])
     .run(function ($ionicPlatform, $ionicPopup, $localstorage, $location) {
         //$localstorage.set('token', 'a')
-        if (typeof $localstorage.get('token') === 'undefined') {
-            $location.path('login');
-        }
+//        if (typeof $localstorage.get('token') === 'undefined') {
+//            $location.path('login');
+//        }
 
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -20,7 +25,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
                 if (navigator.connection.type == Connection.NONE) {
                     $ionicPopup.confirm({
                             title: "Internet Disconnected",
-                            content: "The internet is disconnected on your device."
+                            content: "The internet is disconnected on your device.",
+                            buttons: [{
+                                text: '<b>Ok</b>',
+                                type: 'button-assertive'
+                }]
                         })
                         .then(function (result) {
                             if (!result) {
@@ -103,3 +112,18 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     $urlRouterProvider.otherwise('/tab/dash');
 
 });
+
+var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope, $localstorage) {
+    // Initialize a new promise 
+    var deferred = $q.defer();
+    // Make an AJAX call to check if the user is logged in 
+    var token = $localstorage.get('token');
+    if (typeof token !== 'undefined' || token === '') {
+        deferred.resolve();
+    } else {
+        deferred.reject();
+        $location.path('login');
+    }
+
+    return deferred.promise;
+};
